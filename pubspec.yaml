@@ -54,6 +54,7 @@ flutter:
     - assets/heart.png
     - assets/profile_img.png
     - assets/tooth.png
+    - assets/dr_details.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
