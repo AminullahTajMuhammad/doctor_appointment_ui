@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class DoctorDetailPage extends StatefulWidget {
   @override
@@ -99,24 +100,6 @@ class _DoctorDetailState extends State<DoctorDetailPage> {
                               ),
                             ),
                           ),
-                          // Positioned(
-                          //   height: 45,
-                          //   bottom: 1,
-                          //   child: Container(
-                          //     decoration: BoxDecoration(
-                          //       color: Colors.white,
-                          //       borderRadius: BorderRadius.circular(5),
-                          //       boxShadow: [
-                          //         BoxShadow(
-                          //           color: Color(0x0a000000),
-                          //           offset: Offset(0, 2),
-                          //           blurRadius: 10,
-                          //           spreadRadius: 0,
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     )
@@ -125,7 +108,7 @@ class _DoctorDetailState extends State<DoctorDetailPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 25, top: 30),
+              margin: EdgeInsets.only(left: 20, top: 30),
               child: Text('April 2020',
                 style: TextStyle(
                   color: Color(0xff363636),
@@ -136,7 +119,7 @@ class _DoctorDetailState extends State<DoctorDetailPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 25, top: 20, right: 25),
+              margin: EdgeInsets.only(left: 20, top: 20, right: 20),
               height: 90,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -151,24 +134,92 @@ class _DoctorDetailState extends State<DoctorDetailPage> {
                   demoDates("Mon", "28", false),
                 ],
               ),
-            )
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, top: 30),
+              child: Text('Morning',
+                style: TextStyle(
+                  color: Color(0xff363636),
+                  fontSize: 25,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 20),
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                physics: NeverScrollableScrollPhysics(),
+                childAspectRatio: 2.7,
+                children: [
+                  doctorTimingsData("08:30 AM", true),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 25, top: 30),
+              child: Text('Evening',
+                style: TextStyle(
+                  color: Color(0xff363636),
+                  fontSize: 25,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 20),
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                physics: NeverScrollableScrollPhysics(),
+                childAspectRatio: 2.6,
+                children: [
+                  doctorTimingsData("08:30 AM", true),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                  doctorTimingsData("08:30 AM", false),
+                ],
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width,
+              height: 54,
+              margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Color(0xff107163),
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x17000000),
+                    offset: Offset(0, 15),
+                    blurRadius: 15,
+                    spreadRadius: 0,
+                  ),
+                ],
+              ),
+              child: Text(
+                'Make An Appointment',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
           ],
-        )
-
-        // Container(
-        //   height: 200,
-        //   decoration: BoxDecoration(
-        //     color: Color(0xff053F5E),
-        //     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))
-        //   ),
-        //   child: Column(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //
-        //     ],
-        //   ),
-        // ),
+        ),
       ),
     );
   }
@@ -247,5 +298,69 @@ class _DoctorDetailState extends State<DoctorDetailPage> {
             ],
           ),
       );
+  }
+
+  Widget doctorTimingsData(String time, bool isSelected) {
+    return isSelected ? Container(
+      margin: EdgeInsets.only(left: 20, top: 10),
+      decoration: BoxDecoration(
+        color: Color(0xff107163),
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(right: 2),
+            child: Icon(
+              Icons.access_time,
+              color: Colors.white,
+              size: 18,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 2),
+            child: Text('08:30 AM',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontFamily: 'Roboto',
+              ),
+            ),
+          ),
+        ],
+      ),
+    ) : Container(
+      margin: EdgeInsets.only(left: 20, top: 10),
+      decoration: BoxDecoration(
+        color: Color(0xffEEEEEE),
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(right: 2),
+            child: Icon(
+              Icons.access_time,
+              color: Colors.black,
+              size: 18,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 2),
+            child: Text('08:30 AM',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontFamily: 'Roboto',
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
